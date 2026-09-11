@@ -4,9 +4,18 @@ export type Material = {
   cover: string;
   pdfUrl: string;
   pages: number;
+  featured?: boolean;
 };
 
 export const materials: Material[] = [
+  {
+    id: "recetas-grasa-higado",
+    title: "Recetas para la Grasa en el Hígado",
+    cover: "/covers/00-recetas-grasa-higado.webp",
+    pdfUrl: "/materials/00-recetas-grasa-higado.pdf",
+    pages: 77,
+    featured: true,
+  },
   {
     id: "alimentacion-diabetes",
     title: "Guía de Alimentación para Personas con Diabetes Tipo 2",
@@ -15,18 +24,11 @@ export const materials: Material[] = [
     pages: 75,
   },
   {
-    id: "alimentacion-saludable",
-    title: "Guía Completa de Alimentación Saludable",
-    cover: "/covers/02-guia-alimentacion-saludable.webp",
-    pdfUrl: "/materials/02-guia-alimentacion-saludable.pdf",
-    pages: 88,
-  },
-  {
     id: "plan-21-dias",
-    title: "Plan Alimentario: Desafío de 21 Días",
+    title: "Plan Alimentario 21 Días",
     cover: "/covers/03-plan-alimentario-21-dias.webp",
     pdfUrl: "/materials/03-plan-alimentario-21-dias.pdf",
-    pages: 20,
+    pages: 25,
   },
   {
     id: "mounjaro-natural",
@@ -44,10 +46,10 @@ export const materials: Material[] = [
   },
   {
     id: "zumos-detox",
-    title: "20 Zumos Detox Saludables",
+    title: "50 Zumos Detox",
     cover: "/covers/06-zumos-detox-saludables.webp",
     pdfUrl: "/materials/06-zumos-detox-saludables.pdf",
-    pages: 30,
+    pages: 55,
   },
   {
     id: "freidora-aire",
@@ -76,6 +78,13 @@ export const materials: Material[] = [
     cover: "/covers/10-recetas-controlar-antojos.webp",
     pdfUrl: "/materials/10-recetas-controlar-antojos.pdf",
     pages: 6,
+  },
+  {
+    id: "alimentacion-saludable",
+    title: "Guía Completa de Alimentación Saludable",
+    cover: "/covers/02-guia-alimentacion-saludable.webp",
+    pdfUrl: "/materials/02-guia-alimentacion-saludable.pdf",
+    pages: 88,
   },
 ];
 
