@@ -4,31 +4,28 @@ export type Material = {
   cover: string;
   pdfUrl: string;
   pages: number;
-  featured?: boolean;
+  /** Vista previa parcial en /demo: número de páginas visibles antes del bloqueo. */
+  previewPages?: number;
+  /** Resalta visualmente la tarjeta en la librería (sin la etiqueta "Material principal"). */
+  isFeatured?: boolean;
 };
 
 export const materials: Material[] = [
   {
     id: "recetas-grasa-higado",
-    title: "Recetas para la Grasa en el Hígado",
+    title: "Recetario Alimentación RFS — ¿Tienes hígado graso?",
     cover: "/covers/00-recetas-grasa-higado.webp",
     pdfUrl: "/materials/00-recetas-grasa-higado.pdf",
     pages: 77,
-    featured: true,
-  },
-  {
-    id: "alimentacion-diabetes",
-    title: "Guía de Alimentación para Personas con Diabetes Tipo 2",
-    cover: "/covers/01-guia-alimentacion-diabetes.webp",
-    pdfUrl: "/materials/01-guia-alimentacion-diabetes.pdf",
-    pages: 75,
+    previewPages: 20,
+    isFeatured: true,
   },
   {
     id: "plan-21-dias",
-    title: "Plan Alimentario 21 Días",
+    title: "Plan Alimentario: Desafío de 21 Días",
     cover: "/covers/03-plan-alimentario-21-dias.webp",
     pdfUrl: "/materials/03-plan-alimentario-21-dias.pdf",
-    pages: 25,
+    pages: 20,
   },
   {
     id: "mounjaro-natural",
@@ -46,10 +43,10 @@ export const materials: Material[] = [
   },
   {
     id: "zumos-detox",
-    title: "50 Zumos Detox",
+    title: "20 Zumos Detox Saludables",
     cover: "/covers/06-zumos-detox-saludables.webp",
     pdfUrl: "/materials/06-zumos-detox-saludables.pdf",
-    pages: 55,
+    pages: 30,
   },
   {
     id: "freidora-aire",
@@ -80,6 +77,13 @@ export const materials: Material[] = [
     pages: 6,
   },
   {
+    id: "alimentacion-diabetes",
+    title: "Guía de Alimentación para Personas con Diabetes Tipo 2",
+    cover: "/covers/01-guia-alimentacion-diabetes.webp",
+    pdfUrl: "/materials/01-guia-alimentacion-diabetes.pdf",
+    pages: 75,
+  },
+  {
     id: "alimentacion-saludable",
     title: "Guía Completa de Alimentación Saludable",
     cover: "/covers/02-guia-alimentacion-saludable.webp",
@@ -89,7 +93,27 @@ export const materials: Material[] = [
 ];
 
 export const unlockCopy = {
-  title: "DESBLOQUEA TU ACCESO COMPLETO",
+  title: "DESBLOQUEA LA BIBLIOTECA COMPLETA",
+  subtitle: "Recetario Hígado Graso + 10 bonos exclusivos",
+  featuredLabel: "PRODUCTO PRINCIPAL",
+  featuredTitle: "Recetario Alimentación RFS",
+  bonusesTitle: "10 BONOS INCLUIDOS",
+  bonuses: [
+    "Guía de Alimentación para Diabetes Tipo 2",
+    "Guía Completa de Alimentación Saludable",
+    "Plan Alimentario: Desafío de 21 Días",
+    "Té Casero Mounjaro Natural",
+    "Batidos Nutritivos para una Vida Activa",
+    "20 Zumos Detox Saludables",
+    "50 Recetas sin Azúcar y sin Gluten (Freidora de Aire)",
+    "100 Recetas Bajas en Carbohidratos",
+    "Dulces y Postres sin Azúcar",
+    "5 Recetas Saludables para Controlar los Antojos",
+  ],
+  priceAnchor: "49,90 €",
+  price: "9,90 €",
+  priceNote: "Pago único · Acceso de por vida",
   text: "Realiza la aportación que prefieras entre las opciones enviadas. En cuanto se confirme, recibirás acceso completo a los 10 materiales complementarios.",
-  buttonLabel: "QUIERO DESBLOQUEAR MI ACCESO",
+  buttonLabel: "DESBLOQUEAR TODO POR 9,90 €",
+  continueLabel: "SEGUIR VIENDO LA MUESTRA",
 };

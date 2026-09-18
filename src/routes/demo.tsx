@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GuideCard } from "@/components/library/GuideCard";
+import { LazyPdfReader } from "@/components/library/LazyPdfReader";
 import { SiteHeader } from "@/components/library/SiteHeader";
 import { UnlockModal } from "@/components/library/UnlockModal";
 import { VipGroupCard } from "@/components/library/VipGroupCard";
-import { materials } from "@/data/library";
+import { materials, type Material } from "@/data/library";
 
 export const Route = createFileRoute("/demo")({
   head: () => ({
@@ -22,6 +23,17 @@ export const Route = createFileRoute("/demo")({
 
 export function DemoPage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [previewMaterial, setPreviewMaterial] = useState<Material | null>(null);
+
+  const handleSelect = useCallback((material: Material) => {
+    if (material.isFeatured && material.previewPages) {
+      setPreviewMaterial(material);
+      return;
+    }
+    setModalOpen(true);
+  }, []);
+
+  const closeReader = useCallback(() => setPreviewMaterial(null), []);
 
   return (
     <div className="min-h-screen pb-10">
@@ -51,8 +63,8 @@ export function DemoPage() {
               <GuideCard
                 key={material.id}
                 material={material}
-                locked
-                onSelect={() => setModalOpen(true)}
+                locked={!material.isFeatured}
+                onSelect={handleSelect}
               />
             ))}
           </div>
@@ -62,6 +74,33 @@ export function DemoPage() {
           <VipGroupCard unlocked={false} onLockedClick={() => setModalOpen(true)} />
         </section>
       </main>
+
+      {previewMaterial ? (
+        <LazyPdfReader
+          file={previewMaterial.pdfUrl}
+          title={previewMaterial.title}
+          maxPages={previewMaterial.previewPages}
+          onClose={closeReader}
+          onReachLastPage={() => setModalOpen(true)}
+          lockedContent={
+            <div className="w-full rounded-2xl border border-gold/45 bg-card p-6 text-center shadow-[var(--shadow-soft)]">
+              <p className="font-display text-lg font-semibold text-wine">
+                Has llegado al final de la muestra
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Desbloquea el recetario completo y los 10 bonos exclusivos.
+              </p>
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className="mt-4 min-h-11 w-full rounded-2xl bg-forest px-4 text-sm font-semibold tracking-wide text-primary-foreground transition-colors hover:bg-forest-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                DESBLOQUEAR ACCESO COMPLETO
+              </button>
+            </div>
+          }
+        />
+      ) : null}
 
       <UnlockModal open={modalOpen} onOpenChange={setModalOpen} />
     </div>
