@@ -1,4 +1,4 @@
-import { Users, X } from "lucide-react";
+import { X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -29,70 +29,55 @@ export function UnlockModal({
         </button>
 
         <div className="overflow-y-auto">
-          <div className="px-6 pb-4 pt-7 text-center">
-            <DialogHeader>
-              <DialogTitle className="font-display text-xl font-semibold leading-snug text-wine sm:text-2xl">
-                {unlockCopy.title}
-              </DialogTitle>
-              <DialogDescription className="sr-only">
-                Desbloquea el acceso completo a la biblioteca de recetas.
-              </DialogDescription>
-            </DialogHeader>
-          </div>
+          <DialogHeader className="sr-only">
+            <DialogTitle>{unlockCopy.title}</DialogTitle>
+            <DialogDescription>
+              Desbloquea el acceso completo a la biblioteca de recetas.
+            </DialogDescription>
+          </DialogHeader>
 
-          <div className="space-y-3 px-5 pb-5 sm:px-6">
+          <div className="space-y-2 px-4 pb-4 pt-12 sm:px-5">
             {/* Producto principal */}
-            <div className="flex items-center gap-3 rounded-2xl border border-gold/50 bg-card px-4 py-3">
-              <span className="grid h-9 w-9 shrink-0 place-items-center text-2xl" aria-hidden="true">
+            <div className="flex items-center gap-3 rounded-2xl border-2 border-gold/70 bg-card px-4 py-4">
+              <span className="grid h-12 w-12 shrink-0 place-items-center text-4xl" aria-hidden="true">
                 🥗
               </span>
               <div>
-                <p className="font-display text-base font-semibold leading-snug text-foreground">
-                  {unlockCopy.featuredTitle}
-                </p>
-                <p className="text-[11px] font-extrabold tracking-[0.1em] text-gold">
+                <p className="text-xs font-extrabold tracking-[0.12em] text-gold">
                   {unlockCopy.featuredLabel}
+                </p>
+                <p className="font-display text-xl font-bold leading-tight text-foreground sm:text-2xl">
+                  {unlockCopy.featuredTitle}
                 </p>
               </div>
             </div>
 
             {/* Bonos */}
-            <div className="rounded-2xl border border-gold/40 bg-card px-4 py-4">
-              <p className="mb-2.5 text-xs font-extrabold tracking-[0.1em] text-forest">
+            <div className="rounded-2xl border border-gold/40 bg-card px-4 py-3">
+              <p className="mb-2 text-sm font-black tracking-[0.1em] text-forest">
                 🎁 {unlockCopy.bonusesTitle}
               </p>
-              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                 {unlockCopy.bonuses.map((bonus) => (
-                  <li key={bonus} className="text-xs leading-snug text-foreground">
+                  <li key={bonus} className="text-[13px] font-medium leading-snug text-foreground">
                     {bonus}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Grupo VIP */}
-            <div className="flex items-center gap-2 rounded-2xl border border-gold/40 bg-card px-4 py-3">
-              <span
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-forest text-cream"
-                aria-hidden="true"
-              >
-                <Users className="h-4.5 w-4.5" />
-              </span>
-              <p className="text-sm font-semibold text-wine">Grupo VIP de WhatsApp incluido</p>
-            </div>
-
             {/* Precio */}
-            <div className="rounded-2xl border border-gold/40 bg-card px-4 py-3.5 text-center">
+            <div className="rounded-2xl border border-gold/40 bg-card px-4 py-2.5 text-center">
               <p className="text-sm text-muted-foreground">
                 De <span className="font-semibold text-destructive line-through">{unlockCopy.priceAnchor}</span>
               </p>
-              <p className="font-display text-3xl font-bold text-wine sm:text-4xl">
+              <p className="font-display text-2xl font-bold text-wine sm:text-3xl">
                 TODO POR {unlockCopy.price}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">{unlockCopy.priceNote}</p>
+              <p className="text-xs text-muted-foreground">{unlockCopy.priceNote}</p>
             </div>
 
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               <WhatsappCta label={unlockCopy.buttonLabel} className="cta-pulse" />
               <button
                 type="button"
