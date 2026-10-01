@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as DemoMxRouteImport } from './routes/demo-mx'
 import { Route as FullRouteImport } from './routes/full'
+import { Route as GraciasRouteImport } from './routes/gracias'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const FullRoute = FullRouteImport.update({
   path: '/full',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GraciasRoute = GraciasRouteImport.update({
+  id: '/gracias',
+  path: '/gracias',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo': typeof DemoRoute
   '/demo-mx': typeof DemoMxRoute
   '/full': typeof FullRoute
+  '/gracias': typeof GraciasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo': typeof DemoRoute
   '/demo-mx': typeof DemoMxRoute
   '/full': typeof FullRoute
+  '/gracias': typeof GraciasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/demo': typeof DemoRoute
   '/demo-mx': typeof DemoMxRoute
   '/full': typeof FullRoute
+  '/gracias': typeof GraciasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo' | '/demo-mx' | '/full'
+  fullPaths: '/' | '/demo' | '/demo-mx' | '/full' | '/gracias'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo' | '/demo-mx' | '/full'
-  id: '__root__' | '/' | '/demo' | '/demo-mx' | '/full'
+  to: '/' | '/demo' | '/demo-mx' | '/full' | '/gracias'
+  id: '__root__' | '/' | '/demo' | '/demo-mx' | '/full' | '/gracias'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   DemoRoute: typeof DemoRoute
   DemoMxRoute: typeof DemoMxRoute
   FullRoute: typeof FullRoute
+  GraciasRoute: typeof GraciasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FullRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gracias': {
+      id: '/gracias'
+      path: '/gracias'
+      fullPath: '/gracias'
+      preLoaderRoute: typeof GraciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoRoute: DemoRoute,
   DemoMxRoute: DemoMxRoute,
   FullRoute: FullRoute,
+  GraciasRoute: GraciasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
