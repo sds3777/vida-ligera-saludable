@@ -1,5 +1,6 @@
 import { ArrowRight, Check, LockKeyhole, MessageCircle } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
+import logo from "@/assets/logo-vida-ligera.png";
 
 const LIBRARY_URL = "https://vida-ligera-saludable.vercel.app/full";
 const WHATSAPP_URL = "https://wa.me/5519989410996?text=Tengo%20Dudas";
@@ -91,7 +92,7 @@ function SiteHeader() {
       <div className="relative mx-auto flex min-h-[70px] max-w-7xl items-center justify-center px-3 py-2.5 sm:min-h-[80px] sm:px-5 sm:py-3">
         <div className="absolute left-3 grid h-11 w-11 place-items-center overflow-hidden rounded-full border-2 border-[#19552f]/25 bg-[#fffdf8] shadow-[var(--shadow-soft)] sm:left-5 sm:h-14 sm:w-14">
           <img
-            src="/assets/vida-ligera-logo.webp"
+            src={logo}
             alt="Símbolo de Vida Ligera y Saludable"
             width="512"
             height="512"
